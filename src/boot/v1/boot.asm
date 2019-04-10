@@ -1,6 +1,6 @@
-[ORG 0x0000]
 BITS 16
-
+global _start
+extern launch_kernel 
 _start:
 ; Assigns memory to bootloader
 	mov ax, 07C0h
@@ -17,7 +17,8 @@ _start:
 	call print_string
 	mov si, loading
 ; ------------ Print Data
-	
+	cli
+	call launch_kernel
 	jmp $
 	text_string db 'Nitro',0x0d,0x0a
 	loading db 'Loading OS....',0
