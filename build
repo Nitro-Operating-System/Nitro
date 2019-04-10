@@ -1,6 +1,10 @@
 clear
 echo "Building..."
-nasm -f bin -o os.bin src/boot/boot.asm 
+nasm -elf32 src/boot/boot.asm -o boot.o
+echo "NASM Success!"
+gcc -Wall -c src/boot/trail.c
+echo "GCC Success"
+ld -m i386pe -Ttext 0x100000 boot.o trail.o
 dd status=noxfer conv=notrunc if=os.bin of=os.flp
 echo "Running emu"
 qemu-system-i386 -fda os.flp

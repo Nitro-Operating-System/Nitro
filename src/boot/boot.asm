@@ -1,6 +1,9 @@
 BITS 16
+
+extern ta
+
 cli
-start:
+_start:
 ; Assigns memory to bootloader
 	mov ax, 07C0h
 	add ax, 288
@@ -20,10 +23,9 @@ start:
 ; ------------ Print Handler
 	mov si, text_string	
 	call print_string			
-	mov si, msg
+	call ta
 ; ------------ Print Data
 	text_string db 'Nitro', 0x0D, 0x0A
-	msg db 'This is currently all the OS does...', 0
 
  print_string:			
 	mov ah, 0Eh; print character command

@@ -1,0 +1,45 @@
+%line 1+1 src/boot/boot.asm
+[bits 16]
+[extern ta]
+
+cli
+_start:
+
+ mov ax, 07C0h
+ add ax, 288
+ mov ss, ax
+ mov sp, 4096
+
+ mov ax, 07C0h
+ mov ds, ax
+
+ mov ax,0600H
+ mov bh,71H
+ mov cx,0000H
+ mov dx,184FH
+ int 10H
+ mov ah,4CH
+ int 21H
+
+ mov si, text_string
+ call print_string
+ mov si, msg
+ call ta
+
+ text_string db 'Nitro', 0x0D, 0x0A
+ msg db 'This is currently all the OS does...', 0
+
+ print_string:
+ mov ah, 0Eh
+.rep:
+ lodsb
+ cmp al, 0
+ je .fin
+ int 10h
+ jmp .rep
+
+.fin:
+ ret
+ times 510-($-$$) db 0
+ dw 0xAA55
+
