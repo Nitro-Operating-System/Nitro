@@ -10,13 +10,13 @@ start:
 	mov ax, 07C0h
 	mov ds, ax
 	
-	MOV AX,0600H    ;06 TO SCROLL & 00 FOR FULLJ SCREEN
-    	MOV BH,71H    ;ATTRIBUTE 7 FOR BACKGROUND AND 1 FOR FOREGROUND
-    	MOV CX,0000H    ;STARTING COORDINATES
-   	MOV DX,184FH    ;ENDING COORDINATES
-    	INT 10H       ;FOR VIDEO DISPLAY
-    	MOV AH,4CH    ;RETURN TO DOS MODE
-    	INT 21H
+	mov ax,0600H    ;06 TO SCROLL & 00 FOR FULLJ SCREEN
+    	mov bh,71H    ;ATTRIBUTE 7 FOR BACKGROUND AND 1 FOR FOREGROUND
+    	mov cx,0000H    ;STARTING COORDINATES
+   	mov dx,184FH    ;ENDING COORDINATES
+    	int 10H       ;FOR VIDEO DISPLAY
+	mov ah,4CH    ;RETURN TO DOS MODE
+    	int 21H
 ; ------------ Print Handler
 	mov si, text_string	
 	call print_string			
