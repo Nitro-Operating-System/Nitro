@@ -1,8 +1,0 @@
-clear
-echo "Building..."
-gcc -Wall -c trail.c
-nasm -f src/boot/boot.asm -o boot.o 
-dd status=noxfer conv=notrunc if=os.bin of=os.flp
-echo "Running emu"
-qemu-system-i386 -fda os.flp
-echo "Complete"
