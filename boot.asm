@@ -1,6 +1,7 @@
 BITS 16
 cli
 start:
+; Assigns memory to bootloader
 	mov ax, 07C0h
 	add ax, 288
 	mov ss, ax
@@ -9,13 +10,15 @@ start:
 	mov ax, 07C0h
 	mov ds, ax
 	
-
+; ------------ Print Handler
 	mov si, text_string	
 	call print_string
 	mov si, test_string			
-	
+	mov si, msg
+; ------------ Print Data
 	text_string db 'Nitro', 0xa
-	test_string db 'By ec621', 0
+	test_string db 'By ec621', 0xa
+	msg db 'This is currently all the OS does...', 0
 print_string:			
 	mov ah, 0Eh 		; print character command
 .rep:
