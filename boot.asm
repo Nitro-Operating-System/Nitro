@@ -19,8 +19,8 @@ start:
 	text_string db 'Nitro', 0x0D, 0x0A
 	test_string db 'By ec621', 0x0D, 0x0A
 	msg db 'This is currently all the OS does...', 0
-print_string:			
-	mov ah, 0Eh 		; print character command
+ print_string:			
+	mov ah, 0Eh; print character command
 .rep:
 	lodsb	
 	cmp al, 0
@@ -32,4 +32,4 @@ print_string:
 	ret
 	times 510-($-$$) db 0
 	dw 0xAA55
-
+; 0x0D and 0x0A (Carriage Return and Line Feed)
