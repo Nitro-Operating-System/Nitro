@@ -16,8 +16,8 @@ start:
 	mov si, test_string			
 	mov si, msg
 ; ------------ Print Data
-	text_string db 'Nitro', 0xa
-	test_string db 'By ec621', 0xa
+	text_string db 'Nitro', 0x0D, 0x0A
+	test_string db 'By ec621', 0x0D, 0x0A
 	msg db 'This is currently all the OS does...', 0
 print_string:			
 	mov ah, 0Eh 		; print character command
