@@ -1,8 +1,6 @@
+[ORG 0x0000]
 BITS 16
 
-extern ta
-
-cli
 _start:
 ; Assigns memory to bootloader
 	mov ax, 07C0h
@@ -12,22 +10,26 @@ _start:
 
 	mov ax, 07C0h
 	mov ds, ax
+	call cls
 	
-	mov ax,0600H    ;06 TO SCROLL & 00 FOR FULLJ SCREEN
-    	mov bh,71H    ;ATTRIBUTE 7 FOR BACKGROUND AND 1 FOR FOREGROUND
-    	mov cx,0000H    ;STARTING COORDINATES
-   	mov dx,184FH    ;ENDING COORDINATES
-    	int 10H       ;FOR VIDEO DISPLAY
-	mov ah,4CH    ;RETURN TO DOS MODE
-    	int 21H
 ; ------------ Print Handler
 	mov si, text_string	
-	call print_string			
-	call ta
+	call print_string
+	mov si, loading
 ; ------------ Print Data
-	text_string db 'Nitro', 0x0D, 0x0A
+	
+	jmp $
+	text_string db 'Nitro',0x0d,0x0a
+	loading db 'Loading OS....',0
+cls:
+  pusha
+  mov ah, 0x00
+  mov al, 0x03  ; text mode 80x25 16 colours
+  int 0x10
+  popa
+  ret
 
- print_string:			
+print_string:			
 	mov ah, 0Eh; print character command
 .rep:
 	lodsb	
