@@ -1,23 +1,20 @@
-;;kernel.asm
-
-;nasm directive - 32 bit
 bits 32
 section .text
-        ;multiboot spec
+
         align 4
-        dd 0x1BADB002            ;magic
-        dd 0x00                  ;flags
-        dd - (0x1BADB002 + 0x00) ;checksum. m+f+c should be zero
+        dd 0x1BADB002            
+        dd 0x00                 
+        dd - (0x1BADB002 + 0x00)
 
 global start
-extern launch_kernel	        ;kmain is defined in the c file
+extern launch_kernel	      
 
 start:
-  cli 			;block interrupts
-  mov esp, stack_space	;set stack pointer
+  cli 			
+  mov esp, stack_space	
   call launch_kernel
-  hlt		 	;halt the CPU
+  hlt		 	
 
 section .bss
-resb 8192		;8KB for stack
+resb 8192		
 stack_space:
