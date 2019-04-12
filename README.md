@@ -1,2 +1,2 @@
 # Nitro
-OS Project
+OS Project by ec21
