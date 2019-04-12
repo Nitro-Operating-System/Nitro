@@ -13,7 +13,7 @@ _start:
   cli 			
   mov esp, stack_space	
   call print_welcome
-  ;hlt		 	
+  hlt		 	
 
 section .bss
 resb 8192		
