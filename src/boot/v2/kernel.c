@@ -1,18 +1,20 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include <sys/io.h>
   /*
   	Modified version of OSDEV's Barebones tutorial Kernel
   */
-enum vga_color {
+int text_color = 1;
+enum vga_color 
+{
 	VGA_COLOR_BLACK = 0,
 	VGA_COLOR_BLUE = 1,
 	VGA_COLOR_GREEN = 2,
 	VGA_COLOR_CYAN = 3,
 	VGA_COLOR_RED = 4,
-	VGA_COLOR_WHITE = 15,
+	VGA_COLOR_WHITE = 15
 };
- 
 static inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg) 
 {
 	return fg | bg << 4;
@@ -43,7 +45,8 @@ void term_init(void)
 {
 	terminal_row = 0;
 	terminal_column = 0;
-	terminal_color = vga_entry_color(VGA_COLOR_BLACK, VGA_COLOR_WHITE);
+	//terminal_color = vga_entry_color(VGA_COLOR_WHITE, VGA_COLOR_BLACK);
+	terminal_color = vga_entry_color(text_color, VGA_COLOR_BLACK);
 	terminal_buffer = (uint16_t*) 0xB8000;
 	for (size_t y = 0; y < VGA_HEIGHT; y++) {
 		for (size_t x = 0; x < VGA_WIDTH; x++) {
@@ -83,9 +86,38 @@ void term_writeS(const char* data)
 {
 	terminal_write(data, strlen(data));
 }
-void launch_kernel(void) 
-{	
-	term_init();
-	term_writeS("Hello from the Kernel!");
-	term_writeS("Loading...");
+void enable_cursor(uint8_t cursor_start, uint8_t cursor_end)
+{
+	outb(0x3D4, 0x0A);
+	outb(0x3D5, (inb(0x3D5) & 0xC0) | cursor_start);
+ 
+	outb(0x3D4, 0x0B);
+	outb(0x3D5, (inb(0x3D5) & 0xE0) | cursor_end);
+}
+uint16_t get_cursor_position(void)
+{
+    uint16_t pos = 0;
+    outb(0x3D4, 0x0F);
+    pos |= inb(0x3D5);
+    outb(0x3D4, 0x0E);
+    pos |= ((uint16_t)inb(0x3D5)) << 8;
+    return pos;
+}
+void update_cursor(int x, int y)
+{
+        uint16_t pos = y * VGA_WIDTH + x;
+
+        outb(0x3D4, 0x0F);
+        outb(0x3D5, (uint8_t) (pos & 0xFF));
+        outb(0x3D4, 0x0E);
+        outb(0x3D5, (uint8_t) ((pos >> 8) & 0xFF));
+}
+void print_welcome()
+{
+ term_init();
+ term_writeS("Welcome to Nitro!");
+ enable_cursor(0,0);
+ int getY = get_cursor_position() / VGA_WIDTH;
+ int getX = get_cursor_position() % VGA_WIDTH;
+ update_cursor(getX, getY);
 }

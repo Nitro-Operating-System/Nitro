@@ -6,14 +6,14 @@ section .text
         dd 0x00                 
         dd - (0x1BADB002 + 0x00)
 
-global start
-extern launch_kernel	      
+global _start
+extern print_welcome	      
 
-start:
+_start:
   cli 			
   mov esp, stack_space	
-  call launch_kernel
-  hlt		 	
+  call print_welcome
+  ;hlt		 	
 
 section .bss
 resb 8192		
