@@ -5,7 +5,7 @@
   /*
   	Modified version of OSDEV's Barebones tutorial Kernel
   */
-int text_color = 1;
+int text_color = 4;
 enum vga_color 
 {
 	VGA_COLOR_BLACK = 0,
