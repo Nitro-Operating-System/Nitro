@@ -81,7 +81,7 @@ void terminal_write(const char* data, size_t size)
 	for (size_t i = 0; i < size; i++)
 		terminal_putchar(data[i]);
 }
-void term_writeS(const char* data) 
+void kprint(const char* data) 
 {
 	terminal_write(data, strlen(data));
 }
@@ -94,8 +94,12 @@ void cls()
 void print_welcome()
 {
  term_init();
- term_writeS("Welcome to Nitro!");
+ kprint("Welcome to Nitro!");
  cls();
- term_writeS("Warning! Do not click on this window!");
- cls();
+}
+void run_init() 
+{
+ text_color = 15;
+ term_init();
+ kprint("Initalizing at 0x01000");
 }

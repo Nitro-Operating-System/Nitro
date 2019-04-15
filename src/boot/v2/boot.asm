@@ -8,11 +8,13 @@ section .text
 
 global _start
 extern print_welcome	      
+extern run_init
 
 _start:
   cli 			
   mov esp, stack_space	
   call print_welcome
+  call run_init
   hlt		 	
 
 section .bss
