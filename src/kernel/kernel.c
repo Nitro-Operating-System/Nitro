@@ -2,10 +2,13 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <sys/io.h>
+#include <stdio.h>
   /*
   	Modified version of OSDEV's Barebones tutorial Kernel
   */
 int text_color = 4;
+int cls_buffer = 58;
+void continue_loading(void);
 enum vga_color 
 {
 	VGA_COLOR_BLACK = 0,
@@ -87,7 +90,7 @@ void kprint(const char* data)
 }
 void cls() 
 {
-  for(int i=0; i < VGA_WIDTH; i++) {
+  for(int i=0; i < cls_buffer; i++) {
 	terminal_putchar(' ');
   }
 }
@@ -102,4 +105,11 @@ void run_init()
  text_color = 15;
  term_init();
  kprint("Initalizing at 0x01000");
+ cls();
+ kprint("C initalized.. Code: 0x0a");
+ continue_loading();
+}
+void continue_loading()
+{
+ // printf("Running");
 }
