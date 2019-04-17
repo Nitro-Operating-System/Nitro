@@ -3,9 +3,11 @@
 #include <stdint.h>
 #include <sys/io.h>
 #include <stdio.h>
+#include "kernel.h"
   /*
   	Modified version of OSDEV's Barebones tutorial Kernel
   */
+extern kprint(const char* data);
 int text_color = 4;
 int cls_buffer = 58;
 void continue_loading(void);
@@ -111,5 +113,6 @@ void run_init()
 }
 void continue_loading()
 {
+ initalize_kernel();
  // printf("Running");
 }
