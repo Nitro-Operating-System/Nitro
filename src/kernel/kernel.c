@@ -7,7 +7,7 @@
   /*
   	Modified version of OSDEV's Barebones tutorial Kernel
   */
-extern void kprint(const char* data);
+extern void initalize_kernel(void);
 int text_color = 4;
 int cls_buffer = 58;
 void continue_loading(void);
@@ -95,12 +95,6 @@ void cls()
   for(int i=0; i < cls_buffer; i++) {
 	terminal_putchar(' ');
   }
-}
-void print_welcome()
-{
- term_init();
- kprint("Welcome to Nitro!");
- cls();
 }
 void run_init() 
 {
