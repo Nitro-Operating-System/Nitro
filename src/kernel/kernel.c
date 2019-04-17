@@ -7,7 +7,7 @@
   /*
   	Modified version of OSDEV's Barebones tutorial Kernel
   */
-extern kprint(const char* data);
+extern void kprint(const char* data);
 int text_color = 4;
 int cls_buffer = 58;
 void continue_loading(void);
@@ -109,10 +109,5 @@ void run_init()
  kprint("Initalizing at 0x01000");
  cls();
  kprint("C initalized.. Code: 0x0a");
- continue_loading();
-}
-void continue_loading()
-{
  initalize_kernel();
- // printf("Running");
 }
