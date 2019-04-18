@@ -10,7 +10,7 @@
 extern void initalize_kernel(void);
 int text_color = 4;
 int cls_buffer = 58;
-void continue_loading(void);
+
 enum vga_color 
 {
 	VGA_COLOR_BLACK = 0,
@@ -81,13 +81,24 @@ void terminal_putchar(char c)
 	}
 }
  
-void terminal_write(const char* data, size_t size) 
+void terminal_write(const char data[], size_t size) 
 {
 	for (size_t i = 0; i < size; i++)
 		terminal_putchar(data[i]);
 }
+void check_newline(const char space[])
+{
+  for (int i = 0; i < strlen(space); i++)
+  {
+     if(space[i] == '\n') 
+     {
+    	cls();
+     }
+  }  
+}
 void kprint(const char* data) 
 {
+	check_newline(data);
 	terminal_write(data, strlen(data));
 }
 void cls() 

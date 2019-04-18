@@ -1,0 +1,11 @@
+echo "NASM Building..."
+nasm -f elf32 sys/boot.asm -o kasm.o
+echo "GCC Building..."
+gcc -m32 -Wall -c kernel/kernel.c kernel/init.c
+ar cr kernel.a kernel.o init.o
+echo "Linking..."
+ld -m elf_i386 -T sys/link.ld -o kern kasm.o kernel.a
+echo "Emulating.."
+qemu-system-i386 -kernel kern
+echo "Cleaning.."
+rm init.o kasm.o kernel.a kernel.o kern
