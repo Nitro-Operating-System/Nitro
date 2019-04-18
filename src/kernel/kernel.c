@@ -100,8 +100,5 @@ void run_init()
 {
  text_color = 15;
  term_init();
- kprint("Initalizing at 0x01000");
- cls();
- kprint("C initalized.. Code: 0x0a");
  initalize_kernel();
 }
