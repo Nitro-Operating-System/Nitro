@@ -92,23 +92,27 @@ void check_newline(const char space[])
   {
      if(space[i] == '\n') 
      {
+//For whatever reason this code detects random new lines at the beginning of kprint
     	cls();
      }
   }  
 }
 void kprint(const char* data) 
 {
+	//OS's defacto print statement
 	check_newline(data);
 	terminal_write(data, strlen(data));
 }
 void cls() 
 {
+ //my bullshit diy attempt to deal with \n issues
   for(int i=0; i < cls_buffer; i++) {
 	terminal_putchar(' ');
   }
 }
 void run_init() 
 {
+//sets color and runs other file
  text_color = 15;
  term_init();
  initalize_kernel();
