@@ -73,12 +73,25 @@ void terminal_putentryat(char c, uint8_t color, size_t x, size_t y)
  
 void terminal_putchar(char c) 
 {
+	switch(c) {
+	 case '\n':
+		cls();
+		terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
+        	if (++terminal_column == VGA_WIDTH) {
+                	terminal_column = 0;
+                if (++terminal_row == VGA_HEIGHT)
+                        terminal_row = 0;
+        }
+
+	
+	default:
 	terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
 	if (++terminal_column == VGA_WIDTH) {
 		terminal_column = 0;
 		if (++terminal_row == VGA_HEIGHT)
 			terminal_row = 0;
 	}
+    }
 }
  
 void terminal_write(const char data[], size_t size) 
@@ -86,21 +99,10 @@ void terminal_write(const char data[], size_t size)
 	for (size_t i = 0; i < size; i++)
 		terminal_putchar(data[i]);
 }
-void check_newline(const char space[])
-{
-  for (int i = 0; i < strlen(space); i++)
-  {
-     if(space[i] == '\n') 
-     {	
-	cls();
-     }
-  }  
-}
 void kprint(const char* data) 
 {
 	//OS's defacto print statement
 	terminal_write(data, strlen(data));
-	check_newline(data);
 }
 void cls() 
 {

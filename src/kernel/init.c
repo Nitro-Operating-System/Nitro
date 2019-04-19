@@ -5,8 +5,7 @@ void initalize_kernel()
  term_init();
  kprint("Nitro");
  cls();
- kprint("Initalizing at 0x01000");
- cls();
+ kprint("Initalizing at 0x01000\n");
  kprint("C initalized.. Code: 0x0a");
  cls();
  
