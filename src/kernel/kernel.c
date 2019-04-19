@@ -9,7 +9,7 @@
   */
 extern void initalize_kernel(void);
 int text_color = 4;
-int cls_buffer = 80;
+int cls_buffer = 74;
 //58
 enum vga_color 
 {
@@ -93,15 +93,15 @@ void check_newline(const char space[])
      if(space[i] == '\n') 
      {
 //For whatever reason this code detects random new lines at the beginning of kprint
-	kprint(" new ");
+	cls();
      }
   }  
 }
 void kprint(const char* data) 
 {
 	//OS's defacto print statement
-	check_newline(data);
 	terminal_write(data, strlen(data));
+	check_newline(data);
 }
 void cls() 
 {
