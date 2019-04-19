@@ -1,4 +1,18 @@
-Work on multiple C file compatibility
-Write drivers for USB and Keyboard
-Title displays
+Goals:
+Develop a working terminal with keyboard inputs and notepad functionality
+
+To Do:
+	Make a nitro ascii logo (NOS):
+	Interrupt Handler
+	Memory Management
+	Keyboard Reader
+	Drivers
+	\n capability
+	Debug via .asm files
+	Exception handler
+Completed: 
+	Simple bootloader
+	C connectivity
+	Header Connectivity 
+
 
