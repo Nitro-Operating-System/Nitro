@@ -9,7 +9,7 @@
   */
 extern void initalize_kernel(void);
 int text_color = 4;
-int cls_buffer = 74;
+int cls_buffer = 75;
 //58
 enum vga_color 
 {
