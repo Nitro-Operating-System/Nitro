@@ -9,8 +9,8 @@
   */
 extern void initalize_kernel(void);
 int text_color = 4;
-int cls_buffer = 58;
-
+int cls_buffer = 80;
+//58
 enum vga_color 
 {
 	VGA_COLOR_BLACK = 0,
@@ -93,7 +93,7 @@ void check_newline(const char space[])
      if(space[i] == '\n') 
      {
 //For whatever reason this code detects random new lines at the beginning of kprint
-    	cls();
+	kprint(" new ");
      }
   }  
 }
