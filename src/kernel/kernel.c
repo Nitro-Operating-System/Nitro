@@ -91,8 +91,7 @@ void check_newline(const char space[])
   for (int i = 0; i < strlen(space); i++)
   {
      if(space[i] == '\n') 
-     {
-//For whatever reason this code detects random new lines at the beginning of kprint
+     {	
 	cls();
      }
   }  
@@ -109,11 +108,4 @@ void cls()
   for(int i=0; i < cls_buffer; i++) {
 	terminal_putchar(' ');
   }
-}
-void run_init() 
-{
-//sets color and runs other file
- text_color = 15;
- term_init();
- initalize_kernel();
 }

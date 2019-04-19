@@ -5,12 +5,11 @@ section .text
         dd 0x00                 
         dd - (0x1BADB002 + 0x00)
 global _start	      
-extern run_init
-
+extern initalize_kernel
 _start:
   cli 			
   mov esp, stack_space
-  call run_init
+  call initalize_kernel
   hlt		 	
 
 section .bss
