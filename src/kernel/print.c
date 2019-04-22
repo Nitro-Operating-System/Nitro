@@ -111,3 +111,4 @@ void cls()
 	terminal_putchar(' ');
   }
 }
+//Edited by Evan Carter for use with Nitro
