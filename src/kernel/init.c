@@ -1,11 +1,13 @@
-#include "kernel.h"
+#include "headers/kernel.h"
+#include "headers/panic.h"
 void initalize_kernel()
 {
+ 
  text_color = 15;
  term_init();
- kprint("Nitro");
- cls();
- int* adres = &text_color; 
- char* printad = adres + '0';
- terminal_putchar(printad);
+ kprint("> ");
+ term_init();
+ kprint("> ");
+ term_init();
+ kprint("> ");
 }

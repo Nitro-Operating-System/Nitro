@@ -1,0 +1,1 @@
+void onPanic(char* data);

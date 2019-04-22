@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <sys/io.h>
 #include <stdio.h>
-#include "kernel.h"
+#include "headers/kernel.h"
   /*
   	Modified version of OSDEV's Barebones tutorial Kernel
   */
