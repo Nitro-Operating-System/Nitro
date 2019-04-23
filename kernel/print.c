@@ -8,10 +8,6 @@
   	Modified version of OSDEV's Barebones tutorial Kernel
   */
 extern void initalize_kernel(void);
-int text_color = 0;
-int background_color = 0;
-int cls_buffer = 58;
-//58
 enum vga_color {
     COLOR_BLACK             = 0,
     COLOR_BLUE              = 1,
@@ -56,12 +52,12 @@ size_t terminal_row;
 size_t terminal_column;
 uint8_t terminal_color;
 uint16_t* terminal_buffer;
- 
-void term_init(void) 
+
+void term_init(int fg, int bg) 
 {
 	terminal_row = 0;
 	terminal_column = 0;
-	terminal_color = vga_entry_color(text_color, background_color);
+	terminal_color = vga_entry_color(fg, bg);
 	terminal_buffer = (uint16_t*) 0xB8000;
 	for (size_t y = 0; y < VGA_HEIGHT; y++) {
 		for (size_t x = 0; x < VGA_WIDTH; x++) {
@@ -69,8 +65,7 @@ void term_init(void)
 			terminal_buffer[index] = vga_entry(' ', terminal_color);
 		}
 	}
-}
- 
+} 
 void terminal_setcolor(uint8_t color) 
 {
 	terminal_color = color;
@@ -87,8 +82,10 @@ void terminal_putchar(char c)
       if (c == '\n') {
         if (terminal_row < 25) {
           terminal_row++;
+          terminal_column = 0;
         }else{
           terminal_row = 0;
+	  terminal_column = 0;
         }
      }else{
 	terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
@@ -107,12 +104,6 @@ void terminal_write(const char data[], size_t size)
 void kprint(const char* data) 
 {
 	terminal_write(data, strlen(data));
-}
-void cls() 
-{
-  for(int i=0; i < cls_buffer; i++) {
-	terminal_putchar(' ');
-  }
 }
 //Edited by Evan Carter for use with Nitro
 

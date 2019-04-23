@@ -11,10 +11,13 @@ int c, d;
 }
 void initalize_kernel()
 { 
- text_color = 10;//Light green
- term_init(); 
- kprint("NOS\n");
+ term_init(15, 0); 
+ kprint(": Boot Running   :\n");
+ kprint(": Kernel Running :\n");
+ kprint(": Initalizing..  :\n");
+ kprint(": debug mode     :\n");
  interrupt_handler();
- timeout(10000);
- onPanic("Application Quit!");
+ /*timeout(10000);
+ term_init(4, 0);
+ onPanic("Application Quit!");*/
 }
