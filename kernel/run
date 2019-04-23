@@ -1,0 +1,3 @@
+cd ..
+./run
+cd kernel/

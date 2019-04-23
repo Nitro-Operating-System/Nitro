@@ -1,0 +1,18 @@
+goals:
+Develop a working terminal with keyboard inputs and notepad functionality
+
+To Do:
+	Make a nitro ascii logo (NOS):
+	Interrupt Handler
+	Memory Management
+	Keyboard Reader
+	Drivers
+	Debug via .asm files
+	Exception handler
+Completed: 
+	Simple bootloader
+        onPanic function
+	C connectivity
+	Header Connectivity 
+
+
