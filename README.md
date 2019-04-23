@@ -1,6 +1,6 @@
 # Nitro
 OS Project by ec21
-
+only works on QEMU lol 
 # Thank you osdev forum and discord for all the help!
 Note: 
   v2 is where current development is taking place

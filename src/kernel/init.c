@@ -13,8 +13,6 @@ void initalize_kernel()
  text_color = 10;//Light green
  term_init(); 
  kprint("NOS");
-// kprint("> ");
-
- timeout(10000);
- onPanic("Application Quit!");
+// timeout(10000);
+// onPanic("Application Quit!");
 }

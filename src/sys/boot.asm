@@ -7,11 +7,13 @@ section .text
 global _start	      
 extern initalize_kernel
 extern kprint
+
 _start:
   cli 			
   mov esp, stack_space
   call initalize_kernel
-  hlt	
+  call halt
+halt: hlt	
 section .bss
 resb 8192		
 stack_space:
