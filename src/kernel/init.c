@@ -1,18 +1,20 @@
 #include "headers/kernel.h"
 #include "headers/panic.h"
 #include <stdio.h>	
+void timeout(int delay) {
+int c, d;
+   
+   for (c = 1; c <= delay; c++)
+       for (d = 1; d <= delay; d++)
+       {}
+}
 void initalize_kernel()
-{
- 
- text_color = 15;
- term_init();
- kprint("> ");
- int cr2_var;
- asm volatile ( 
-	"movq %%cr2, %%0;"
-	: "=r" (cr2_var)
- );
- char *dat = "";
- sprintf(dat, cr2_var);
- kprint(dat);
+{ 
+ text_color = 10;//Light green
+ term_init(); 
+ kprint("NOS");
+// kprint("> ");
+
+ timeout(10000);
+ onPanic("Application Quit!");
 }

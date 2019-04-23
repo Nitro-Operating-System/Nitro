@@ -3,5 +3,5 @@
 void onPanic(char* data) {
   term_init();
   kprint(data);
-  kprint(" Exception!~~ PANIC ");
+  kprint(" {PANIC EXECP} ");
 }

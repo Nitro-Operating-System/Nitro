@@ -7,11 +7,11 @@ To Do:
 	Memory Management
 	Keyboard Reader
 	Drivers
-	\n capability
 	Debug via .asm files
 	Exception handler
 Completed: 
 	Simple bootloader
+        onPanic function
 	C connectivity
 	Header Connectivity 
 

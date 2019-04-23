@@ -4,3 +4,5 @@ void cls(void);
 void term_init(void);
 int text_color;
 void terminal_putchar(char c);
+void timeout(int delay);
+
