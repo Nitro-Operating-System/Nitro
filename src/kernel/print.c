@@ -99,14 +99,13 @@ void terminal_write(const char data[], size_t size)
 }
 void kprint(const char* data) 
 {
-	//OS's defacto print statement
 	terminal_write(data, strlen(data));
 }
 void cls() 
 {
- //my bullshit diy attempt to deal with \n issues
   for(int i=0; i < cls_buffer; i++) {
 	terminal_putchar(' ');
   }
 }
 //Edited by Evan Carter for use with Nitro
+

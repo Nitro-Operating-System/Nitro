@@ -7,7 +7,6 @@ section .text
 global _start	      
 extern initalize_kernel
 extern kprint
-
 _start:
   cli 			
   mov esp, stack_space
