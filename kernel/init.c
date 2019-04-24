@@ -12,10 +12,9 @@ int c, d;
 void initalize_kernel()
 { 
  term_init(15, 0); 
- kprint(": Boot Running   :\n");
- kprint(": Kernel Running :\n");
- kprint(": Initalizing..  :\n");
- kprint(": debug mode     :\n");
+ kprint("[Bootloader] Opening Kernel\n");
+ kprint("[Kernel] Boot Running\n");
+ kprint("[Kernel] Debug Mode Active\n");
  interrupt_handler();
  /*timeout(10000);
  term_init(4, 0);

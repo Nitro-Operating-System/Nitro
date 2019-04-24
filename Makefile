@@ -3,7 +3,8 @@ ASSEMBLY = sys/boot.asm
 BUILT = print.o init.o panic.o interrupt.o
 default: program
 NASMFLAGS = -f elf32
-
+clean:
+	rm $(BUILT) boot.o kern kernel.a
 program: kern
 	qemu-system-i386 -kernel kern
 	rm $(BUILT) boot.o kern kernel.a
