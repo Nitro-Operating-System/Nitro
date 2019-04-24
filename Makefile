@@ -1,10 +1,10 @@
-OBJECTS = kernel/init.c kernel/print.c kernel/intr/panic.c kernel/intr/interrupt.c
-ASSEMBLY = sys/boot.asm
-BUILT = print.o init.o panic.o interrupt.o
+OBJECTS = kernel/init.c kernel/print.c kernel/intr/panic.c kernel/intr/interrupt.c 
+ASSEMBLY = sys/boot.asm sys/intrhandle.asm
+BUILT = print.o init.o panic.o intrhandle.o
 default: program
 NASMFLAGS = -f elf32
 clean:
-	rm $(BUILT) boot.o kern kernel.a
+	rm $(BUILT) boot.o kern kernel.a interrupt.o
 program: kern
 	qemu-system-i386 -kernel kern
 	rm $(BUILT) boot.o kern kernel.a
