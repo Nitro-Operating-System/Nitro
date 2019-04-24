@@ -11,6 +11,8 @@ To Do:
 Completed: 
 	Simple bootloader
         onPanic function
+	Seperate asm files 
+	Makefile compatbility
 	C connectivity
 	Header Connectivity 
 
