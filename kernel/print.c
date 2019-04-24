@@ -52,7 +52,7 @@ size_t terminal_row;
 size_t terminal_column;
 uint8_t terminal_color;
 uint16_t* terminal_buffer;
-
+//function now takes fg and bg for color idet
 void term_init(int fg, int bg) 
 {
 	terminal_row = 0;
