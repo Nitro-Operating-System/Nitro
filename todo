@@ -3,12 +3,11 @@ Develop a working terminal with keyboard inputs and notepad functionality
 
 To Do:
 	Make a nitro ascii logo (NOS):
-	Interrupt Handler
-	Memory Management
-	Keyboard Reader
-	Drivers
+	Interrupt Handler (ip)
+	Memory Management 
+	Drivers: Keyboard or Networking
 	Debug via .asm files
-	Exception handler
+	Exception handler (ip)
 Completed: 
 	Simple bootloader
         onPanic function
