@@ -15,5 +15,5 @@ void initalize_kernel()
  kprint("[Bootloader] Opening Kernel\n");
  kprint("[Kernel] Boot Running\n");
  kprint("[Kernel] Debug Mode Active\n");
- //interrupt_handler();
+ 
 }
