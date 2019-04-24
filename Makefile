@@ -10,13 +10,14 @@ program: kern
 	qemu-system-i386 -kernel kern
 	rm $(BUILT) boot.o kern kernel.a
 kern: sys/link.ld boot.o kernel.a
-	ld -m elf_i386 -T sys/link.ld -o kern boot.o kernel.a
+	ld -m elf_i386 -T sys/link.ld -o kern asm.o kernel.a
 $(BUILTASM): $(ASSEMBLY)
 	nasm $(NASMFLAGS) boot.asm -o boot.o
 	nasm $(NASMFLAGS) intrhandle.asm -o intrhandle.o
 kernel.a: $(BUILT)
 	ar cr kernel.a $(BUILT)
-
+asm.o:
+	ld -o asm.o $(BUILTASM) -lc
 $(BUILT): $(OBJECTS)
 	gcc -m32 -Wall -c $(OBJECTS)
 
