@@ -15,8 +15,5 @@ void initalize_kernel()
  kprint("[Bootloader] Opening Kernel\n");
  kprint("[Kernel] Boot Running\n");
  kprint("[Kernel] Debug Mode Active\n");
- interrupt_handler();
- /*timeout(10000);
- term_init(4, 0);
- onPanic("Application Quit!");*/
+ //interrupt_handler();
 }

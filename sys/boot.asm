@@ -7,10 +7,12 @@ section .text
 global _start	      
 extern initalize_kernel
 extern kprint
+extern isr_wrapper
 _start:
   cli 			
   mov esp, stack_space
   call initalize_kernel
+  call isr_wrapper
   call halt
 halt: hlt	
 section .bss
