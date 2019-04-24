@@ -1,3 +1,6 @@
-v2 is the current up to date file
-> v1 is only kept for ASM help
->> v1 also includes a self made bootloader not using a kernel 
+Order of Operations
+boot.asm calls init.c to initalize the OS
+intrhandler.asm calls interrupt handler to run the irh
+print.c contains most of the used functions including kprint
+
+kprint is the OS's defacto print statement and uses \n to declare next line
