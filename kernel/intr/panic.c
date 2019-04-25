@@ -2,5 +2,5 @@
 #include "../headers/panic.h"
 void onPanic(char* data) {
   kprint(data);
-  kprint(" {PANIC EXECP} ");
+  kprint(" {PANIC EXECP} \n");
 }

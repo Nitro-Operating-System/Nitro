@@ -4,10 +4,11 @@ BUILT = print.o init.o panic.o interrupt.o
 BUILTASM = intrhandle.o boot.o
 default: prog
 NASMFLAGS = -f elf32
+GCCFLAGS = -m32 -Wall -c
 clean: 
 	rm $(BUILT) $(BUILTASM) kern
 prog: 
-	gcc -m32 -Wall -c $(OBJECTS)
+	gcc $(GCCFLAGS) $(OBJECTS)
 	nasm $(NASMFLAGS) sys/boot.asm -o boot.o
 	nasm $(NASMFLAGS) sys/intrhandle.asm -o intrhandle.o
 	ld -m elf_i386 -T sys/link.ld -o kern $(BUILTASM) $(BUILT)
