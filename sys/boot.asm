@@ -6,13 +6,12 @@ section .text
         dd - (0x1BADB002 + 0x00)
 global _start	      
 extern initalize_kernel
-extern kprint
-extern isr_wrapper
+extern run
 _start:
   cli 			
   mov esp, stack_space
+  call run
   call initalize_kernel
-  call isr_wrapper
   call halt
 halt: hlt	
 section .bss

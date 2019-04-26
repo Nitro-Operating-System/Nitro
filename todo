@@ -2,7 +2,7 @@ goals:
 Develop a working terminal with keyboard inputs and notepad functionality
 
 To Do:
-	Make a nitro ascii logo (NOS):
+[V]	Make a nitro ascii logo (NOS):
 	Interrupt Handler (ip)
 	Memory Management 
 	Drivers: Keyboard or Networking
