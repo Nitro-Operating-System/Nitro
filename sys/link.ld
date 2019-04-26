@@ -1,6 +1,3 @@
-/*
-*  Linker file for boot.asm and kernel.c
-*/
 OUTPUT_FORMAT(elf32-i386)
 ENTRY(_start)
 
