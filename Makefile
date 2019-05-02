@@ -1,4 +1,4 @@
-OBJECTS = kernel/init.c kernel/print.c kernel/intr/panic.c kernel/intr/interrupt.c 
+OBJECTS = kernel/init.c kernel/print.c kernel/panic.c kernel/interrupt.c 
 ASSEMBLY = sys/boot.asm sys/irh.asm 
 BUILT = print.o init.o panic.o interrupt.o
 BUILTASM = boot.o irh.o
