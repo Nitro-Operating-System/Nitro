@@ -1,6 +1,6 @@
-OBJECTS = kernel/init.c kernel/print.c kernel/panic.c kernel/interrupt.c 
+OBJECTS = kernel/init.c kernel/print.c kernel/panic.c kernel/interrupt.c kernel/welcome.c
 ASSEMBLY = sys/boot.asm sys/irh.asm 
-BUILT = print.o init.o panic.o interrupt.o
+BUILT = print.o init.o panic.o interrupt.o welcome.o
 BUILTASM = boot.o irh.o
 default: prog
 NASMFLAGS = -f elf32
