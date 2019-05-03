@@ -6,9 +6,12 @@ void onPanic(char* data) {
 }
 void panic(int panicCode) {
   if(panicCode == 0) {
-	kprint("Panic Handler detected no needed panic");
+	kprint("Panic Handler detected no panic");
   }
-  else {
+  if(panicCode == 254) {
+	kprint("Special use panic");
+  }
+  /*else {
 	onPanic("System Exec");
-  }
+  }*/
 }

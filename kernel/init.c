@@ -8,5 +8,5 @@ void initalize_kernel()
 	kprint(" :: [Kernel] Boot Running\n");
 	kprint(" :: [Kernel] Debug Mode Active\n");
 	onPanic("End of Kernel");
-	panic(1);
+	panic(0);
 }

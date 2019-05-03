@@ -2,7 +2,7 @@
 #include "headers/irh.h"
 void interrupt_handler() 
 {
- //This is called from a seperate asm file in sys
  kprint(" :: [IRH] Started\n");
  kprint(" :: [IRH] Control Transfered\n"); 
+ //todo: add link to asm file for irq irh
 }

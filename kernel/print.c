@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "headers/kernel.h"
   /*
-  	Modified version of OSDEV's Barebones tutorial Kernel
+  	Modified version of OSDEV's Barebones tutorial for Non-Bios Printing (VGA)
   */
 extern void initalize_kernel(void);
 enum vga_color {
