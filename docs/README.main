@@ -1,6 +1,0 @@
-Order of Operations
-boot.asm calls init.c to initalize the OS
-intrhandler.asm calls interrupt handler to run the irh
-print.c contains most of the used functions including kprint
-
-kprint is the OS's defacto print statement and uses \n to declare next line
