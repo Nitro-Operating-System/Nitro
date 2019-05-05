@@ -5,7 +5,6 @@
 void run_welcome()
 {
 	term_init(0,15);
-	kprint("Welcome to Nitro OS\n");
-	kprint("Created by ec21\n");
+	kprint("Nitro OS\n");
 	onPanic("end welcome...");
 }
