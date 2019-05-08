@@ -8,12 +8,12 @@ global _start
 extern initalize_kernel
 extern run
 _start:
-  cli 			
+  call cli		
   mov esp, stack_space
-  call run
   call initalize_kernel
   call halt
-halt: hlt	
+halt: hlt
+cli: cli
 section .bss
 resb 8192		
 stack_space:

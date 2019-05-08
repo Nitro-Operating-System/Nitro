@@ -4,7 +4,8 @@
 
 void run_welcome()
 {
-	term_init(0,15);
+	term_init(11,0);
 	kprint("Nitro OS\n");
+	kprint(">_\n");
 	onPanic("end welcome...");
 }
