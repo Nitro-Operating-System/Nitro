@@ -59,7 +59,7 @@ void key_handler() {
             keytimeout[i] = KEY_DEL;
         } else {
             if(keydown[i] == true) {
-                    //kprint("Timeout is the problem");
+//                    kprint("Timeout is the problem");
             }
             //char time[6];
             //int_to_ascii(keytimeout[i], time);
