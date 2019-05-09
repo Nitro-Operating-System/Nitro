@@ -24,34 +24,30 @@ static int times;
 static bool send = true;
 
 static void keyboard_callback(registers_t regs) {
-    /* The PIC leaves us the scancode in port 0x60 */
     u8 scancode = port_byte_in(0x60);
-	
-
 	bool iskeyup = false;
 	if (scancode >= 0x80) {
 		iskeyup = true;
 		scancode -= 0x80;
 	}
-
-    if (scancode > SC_MAX) return;
-	if (iskeyup == true) {
+   	if (scancode > SC_MAX) return;
+	  if (iskeyup) {
 		keydown[(int)scancode] = false;
-	} else {
+	  } else {
 		keydown[(int)scancode] = true;
-		if ((int)scancode != prevcode) {
-			times = 0;
-			prevcode = (int)scancode;
-			send = true;
+	  if ((int)scancode != prevcode) {
+		times = 0;
+		prevcode = (int)scancode;
+		send = true;
+	 } else {
+	        if(scancode != BACKSPACE) {
+			send = false;
+			times += 1;
 		} else {
-			if(scancode != BACKSPACE) {
-				send = false;
-				times += 1;
-			} else {
-				send = true;
-				times = 0;
-			}
+			send = true;
+			times = 0;
 		}
+	}
     }
 	if (times >= 1) {
 		send = true;
@@ -61,9 +57,9 @@ static void keyboard_callback(registers_t regs) {
 		send = true;
 		times = 0;
 	}
-	if (send == true) {
+	if (send) {
 		key_handler();
-		//kprint("sent");
+//		kprint("sent");
 	}
     UNUSED(regs);
 }
