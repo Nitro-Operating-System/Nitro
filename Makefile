@@ -32,7 +32,7 @@ myos.iso: os-image.bin
 	genisoimage -quiet -V 'DRIPOS' -input-charset iso8859-1 -o myos.iso -b floppy.img iso/
 
 iso: myos.iso
-	cp myos.iso doneiso/
+	cp myos.iso iso/
 # Open the connection to qemu and load our kernel-object file with symbols
 debug: os-image.bin kernel.elf
 	qemu-system-i386 -s -fda os-image.bin -d guest_errors,int &
