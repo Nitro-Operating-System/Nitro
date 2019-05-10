@@ -1,3 +1,3 @@
 # NitroOS
-# Based on DripOS
+## Based on DripOS
   

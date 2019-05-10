@@ -59,11 +59,11 @@ void key_handler() {
             keytimeout[i] = KEY_DEL;
         } else {
             if(keydown[i] == true) {
-//                    kprint("Timeout is the problem");
+///                   kprint("Timeout is the problem");
             }
-            //char time[6];
-            //int_to_ascii(keytimeout[i], time);
-            //kprint(time);
+//          char time[6];
+//          int_to_ascii(keytimeout[i], time);
+//          kprint(time);
             if(keytimeout[i] == 0) {
                 keytimeout[i] = KEY_DEL;
                 if (keydown[(int)LSHIFT] == true || keydown[(int)RSHIFT] == true) {
@@ -82,7 +82,7 @@ void key_handler() {
                     }
                 } else {
                     if(keydown[i] == true) {
-                        //kprint("We fixed it people!!");
+//                      kprint("We fixed it people!!");
                         char letter = sc_ascii[i];
                         /* Remember that kprint only accepts char[] */
                         char str[2] = {letter, '\0'};

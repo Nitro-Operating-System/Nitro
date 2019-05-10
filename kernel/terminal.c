@@ -31,11 +31,13 @@ void execute_command(char *input) {
     } else if (strcmp(input, "nmem") == 0) {
         memory();
     } else if (strcmp(input, "help") == 0) {
-		kprint("Commands: nmem, help, shutdown, panic, print, clear, \nbgtask, bgoff, time, exit\n");
+		kprint("Commands: nmem, help, shutdown, panic, print, clear \nbgtask, bgoff, time, exit, reboot\n");
 	} else if (strcmp(input, "clear") == 0){
 		clear_screen();
 	} else if (strcmp(input, "exit") == 0) {
 		shutdown();
+	} else if (strcmp(input, "reboot") == 0) {
+		main();
 	} else if (match("print", input) == -2) {
 		kprint("Not enough args!");
 	} else if ((match(input, "print") + 2) == 6) {

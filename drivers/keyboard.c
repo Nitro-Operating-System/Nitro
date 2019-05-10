@@ -8,14 +8,10 @@
 #include "stdin.h"
 #include <stdbool.h>
 
-
 #define BACKSPACE 0x0E
 #define ENTER 0x1C
 #define LSHIFT 0x2A
 #define RSHIFT 0x36
-
-
-
 #define SC_MAX 57
 
 bool keydown[256];
@@ -35,20 +31,21 @@ static void keyboard_callback(registers_t regs) {
 		keydown[(int)scancode] = false;
 	  } else {
 		keydown[(int)scancode] = true;
-	  if ((int)scancode != prevcode) {
-		times = 0;
-		prevcode = (int)scancode;
-		send = true;
-	 } else {
-	        if(scancode != BACKSPACE) {
-			send = false;
-			times += 1;
+	  	if ((int)scancode != prevcode) {
+			//narrowed problem down here due to sending multiple prevcodes
+			times = 0;
+			prevcode = (int)scancode;
+			send = true;
+	 	} else {
+	        	if(scancode != BACKSPACE) {
+				send = false;
+				times += 1;
 		} else {
 			send = true;
 			times = 0;
 		}
-	}
-    }
+	  }
+   	}
 	if (times >= 1) {
 		send = true;
 		times = 0;
