@@ -10,34 +10,6 @@ int get_offset(int col, int row);
 int get_offset_row(int offset);
 int get_offset_col(int offset);
 
-/**********************************************************
- * Public Kernel API functions                            *
- **********************************************************/
-
-/**
- * Print a message on the specified location
- * If col, row, are negative, we will use the current offset
- */
-
-int logo[16][16] = {
-        {0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 3, 3, 1, 1, 3, 3, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 3, 1, 2, 2, 1, 3, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 3, 3, 1, 2, 2, 1, 3, 3, 0, 0, 0, 0},
-        {0, 0, 0, 0, 3, 1, 2, 2, 2, 2, 1, 3, 0, 0, 0, 0},
-        {0, 0, 0, 3, 3, 1, 2, 2, 2, 2, 1, 3, 3, 0, 0, 0},
-        {0, 0, 0, 3, 1, 2, 2, 2, 2, 2, 2, 1, 3, 0, 0, 0},
-        {0, 0, 3, 3, 1, 2, 2, 2, 2, 2, 2, 1, 3, 3, 0, 0},
-        {0, 0, 3, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 3, 0, 0},
-        {0, 0, 3, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 3, 0, 0},
-        {0, 0, 3, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 3, 0, 0},
-        {0, 0, 3, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 3, 0, 0},
-        {0, 0, 3, 3, 1, 2, 2, 2, 2, 2, 2, 1, 3, 3, 0, 0},
-        {0, 0, 0, 3, 3, 1, 2, 2, 2, 2, 1, 3, 3, 0, 0, 0},
-        {0, 0, 0, 0, 3, 3, 1, 1, 1, 1, 3, 3, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0}
-};
-
 void kprint_at(char *message, int col, int row) {
     /* Set cursor if col/row are negative */
     int offset;
@@ -127,41 +99,6 @@ void kprint_at_col(char *message, int col, int row, char color) {
 
 void kprint(char *message) {
     kprint_at(message, -1, -1);
-}
-
-//void drip() {
-//	kprint_at_blue("#",  32, 0);
-//	kprint_at_blue("#",  32, 1);
-//	kprint_at_blue("###",  31, 2);
-//	kprint_at_blue("###",  31, 3);
-//	kprint_at_blue("#######",  29, 4);
-//	kprint_at_blue("###########",  27, 5);
-//	kprint_at_blue("###############",  25, 6);
-//	kprint_at_blue("#################",  24, 7);
-//	kprint_at_blue("###################",  23, 8);
-//	kprint_at_blue("###################",  23, 9);
-//	kprint_at_blue("#################",  24, 10);
-//	kprint_at_blue("###############",  25, 11);
-//	kprint_at_blue("###########",  27, 12);
-//	kprint_at_blue("DripOS", 30, 14);
-//}
-
-void logoDraw() {
-    int xOff = 24;
-
-    for (int y = 0; y < 16; y++) {
-        for (int x = 0; x < 16; x++) {
-            if(logo[y][x] == 1) {
-                kprint_at_col(" ", x + xOff, y, BLACK_ON_BLACK);
-            } else if(logo[y][x] == 2) {
-                kprint_at_col(" ", x + xOff, y, CYAN_ON_CYAN);
-            } else if(logo[y][x] == 3) {
-                kprint_at_col(" ", x + xOff, y, WHITE_ON_WHITE);
-            } else {
-                kprint_at_col(" ", x + xOff, y, WHITE_ON_BLACK);
-            }
-        }
-    }
 }
 
 void kprint_backspace() {
