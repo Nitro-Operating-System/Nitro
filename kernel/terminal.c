@@ -42,6 +42,9 @@ void execute_command(char *input) {
 		kprint("Not enough args!");
 	} else if ((match(input, "print") + 2) == 6) {
 		kprint(afterSpace(input));
+	} else if (strcmp(input, "test") ==0) {
+	//	kprint("Testing");
+		state = 3;
 	} else if (match("tone", input) == -2) {
 		kprint("Not enough args!");
 		wait(30);
