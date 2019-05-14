@@ -15,6 +15,7 @@ int passin = 0;
 int state = 0;
 int uinlen = 0;
 int prompttype = 0;
+char* last_input;
 void main() {
 	stdin_init();
 	isr_install();
@@ -33,7 +34,12 @@ void run_startup_sound() {
 }
 
 void user_input(char *input) {
-	execute_command(input);
+	if(strcmp(input,"last")) {
+		execute_command(input);
+	}else{
+		last_input = input;
+		execute_command(input);
+	}
 }
 
 void halt() {

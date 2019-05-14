@@ -10,5 +10,5 @@ void halt();
 void shutdown();
 void panic();
 void memory();
-
+char* last_input;
 #endif

@@ -34,6 +34,8 @@ void execute_command(char *input) {
 		kprint("Commands: nmem, help, shutdown, panic, print, clear \nbgtask, bgoff, time, exit, reboot\n");
 	} else if (strcmp(input, "clear") == 0){
 		clear_screen();
+	} else if(strcmp(input, "last") == 0) {
+		kprint(last_input);
 	} else if (strcmp(input, "exit") == 0) {
 		shutdown();
 	} else if (strcmp(input, "reboot") == 0) {
