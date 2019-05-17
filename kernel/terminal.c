@@ -39,6 +39,7 @@ void execute_command(char *input) {
 	} else if (strcmp(input, "exit") == 0) {
 		shutdown();
 	} else if (strcmp(input, "reboot") == 0) {
+	    	argt = 1;
 		main();
 	} else if (match("print", input) == -2) {
 		kprint("Not enough args!");
