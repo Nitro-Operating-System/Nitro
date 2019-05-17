@@ -20,7 +20,7 @@ unsigned int  year;
 	return port_byte_in(cmos_data);
 }
  void format_time(char *string_buf, int len) {
-	
+	//technically unneccesary but might be used later
 }
  void read_rtc() {
 	unsigned char century;
